@@ -47,6 +47,13 @@ public class SnakeHead extends GameEntity implements Interactable {
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
             snake.addPart(4);
+            // if
+            // új PowerUpAddLife class
+            // hasonlóan működik a damage is, csak ezesetben életet adok hozzá
+            // apply --> ha találkozik vmivel, mit csináljon
+            // --> snakehead-ben megírni
+            // megnézni, ha megvan a 100 élet ne adjon hozzá többet
+
         }
     }
 
