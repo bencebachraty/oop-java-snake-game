@@ -18,7 +18,7 @@ public class SizeReduceEnemy extends Enemy implements Animatable, Interactable {
     private static Random rnd = new Random();
 
     public SizeReduceEnemy() {
-        super(0);
+        super(-5);
 
         setImage(Globals.getInstance().getImage("SizeReduceEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
