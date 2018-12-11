@@ -6,8 +6,14 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.powerups.PowerUpAddLife;
+import com.codecool.snake.entities.enemies.SizeReduceEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import com.codecool.snake.entities.powerups.SpeedPowerUp;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
@@ -45,6 +51,10 @@ public class SnakeHead extends GameEntity implements Interactable {
             System.out.println(getMessage());
             snake.changeHealth(((Enemy) entity).getDamage());
         }
+        if(entity instanceof SizeReduceEnemy){
+            System.out.println(getMessage());
+            snake.removePart(3);
+        }
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
             snake.addPart(4);
@@ -54,6 +64,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
             // megnézni, ha megvan a 100 élet ne adjon hozzá többet
 
+        }
+        if (entity instanceof SpeedPowerUp) {
+            System.out.println(getMessage());
+            snake.changeSpeed();
         }
     }
 
