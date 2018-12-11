@@ -7,7 +7,10 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Region;
+import javafx.stage.StageStyle;
 
 import java.util.Arrays;
 
@@ -76,6 +79,7 @@ public class Snake implements Animatable {
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
+            gameOverAlert();
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
         }
@@ -112,6 +116,22 @@ public class Snake implements Animatable {
                 },
                 3000
         );
+    }
+
+    private void gameOverAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setGraphic(null);
+        alert.getDialogPane().setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText("Final score: " + getScore());
+        alert.show();
+    }
+
+    private int getScore() {
+        int score = body.getList().size() - 4;
+        if (score < 1) return 0;
+        else return score;
     }
 }
 
