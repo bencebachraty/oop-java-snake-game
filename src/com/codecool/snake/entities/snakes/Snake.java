@@ -78,9 +78,4 @@ public class Snake implements Animatable {
         if(result != null) return result;
         return head;
     }
-
-    public void addLife() {
-        this.health = health + 1;
-        System.out.println(health);
-    }
 }

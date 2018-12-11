@@ -27,6 +27,6 @@ public class PowerUpAddLife extends GameEntity implements Interactable {
 
     @Override
     public String getMessage() {
-        return "Collected 1 more life :)";
+        return "Collected 10 more life :)";
     }
 }
