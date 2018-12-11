@@ -50,7 +50,7 @@ public class SnakeHead extends GameEntity implements Interactable {
             snake.addPart(4);
         if (entity instanceof PowerUpAddLife){
             System.out.println(getMessage());
-            snake.changeHealth(-10);
+            snake.changeHealth(10);
         }
             // megnézni, ha megvan a 100 élet ne adjon hozzá többet
 
