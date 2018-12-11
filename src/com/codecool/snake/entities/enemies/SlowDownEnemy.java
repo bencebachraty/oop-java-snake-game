@@ -18,9 +18,9 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
     private static Random rnd = new Random();
 
     public SlowDownEnemy() {
-        super(10);
+        super(-10);
 
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
+        setImage(Globals.getInstance().getImage("SlowDownEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
@@ -50,6 +50,6 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
 
     @Override
     public String getMessage() {
-        return (getDamage() + " damage");
+        return (getDamage() + " damage and slowed down");
     }
 }
