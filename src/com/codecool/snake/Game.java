@@ -30,7 +30,6 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(4);
         spawnAddLife(4);
         spawnPowerUps(5);
         spawnSimpleEnemies(4);
