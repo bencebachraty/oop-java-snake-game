@@ -27,7 +27,7 @@ public class SizeReduceEnemy extends Enemy implements Animatable, Interactable {
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
-        int speed = 2;
+        int speed = 1;
         heading = Utils.directionToVector(direction, speed);
     }
 
