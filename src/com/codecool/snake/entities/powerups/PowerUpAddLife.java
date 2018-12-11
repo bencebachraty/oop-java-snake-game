@@ -11,7 +11,7 @@ public class PowerUpAddLife extends GameEntity implements Interactable {
     private static Random rnd = new Random();
 
     public PowerUpAddLife() {
-        setImage(Globals.getInstance().getImage("PowerUpBerry"));
+        setImage(Globals.getInstance().getImage("PowerUpApple"));
 
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
@@ -27,6 +27,6 @@ public class PowerUpAddLife extends GameEntity implements Interactable {
 
     @Override
     public String getMessage() {
-        return "Got power-up :)";
+        return "Collected 1 more life :)";
     }
 }
