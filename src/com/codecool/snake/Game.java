@@ -1,8 +1,13 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.enemies.SlowDownEnemy;
+import com.codecool.snake.entities.enemies.SizeReduceEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.PowerUpAddLife;
+import com.codecool.snake.entities.powerups.SpeedPowerUp;
+
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -26,8 +31,10 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(4);
-        spawnPowerUps(4);
+        spawnAddLife(4);
+        spawnPowerUps(5);
+        spawnSimpleEnemies(4);
+        spawnSizeReduceEnemies(4);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -47,10 +54,19 @@ public class Game extends Pane {
     private void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new SlowDownEnemy();
+        for(int i = 0; i < numberOfEnemies; ++i) new SizeReduceEnemy();
     }
 
+
     private void spawnPowerUps(int numberOfPowerUps) {
+
+        GameEntity speed = new SpeedPowerUp();
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+
+    }
+
+    private void spawnAddLife(int numberOfPowerUps) {
+        for(int i = 0; i < numberOfPowerUps; ++i) new PowerUpAddLife();
     }
 
     private void setupInputHandling() {

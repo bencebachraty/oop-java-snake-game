@@ -9,9 +9,12 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.input.KeyCode;
 
+import java.util.Arrays;
+
 
 public class Snake implements Animatable {
     private float speed = 2;
+
     private int health = 100;
 
     private SnakeHead head;
@@ -53,6 +56,21 @@ public class Snake implements Animatable {
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
 
+    public void removePart(int numParts) {
+
+        for (int i = 0; i < numParts; i++) {
+            GameEntity parent = getLastPart();
+            body.remove(parent);
+            parent.destroy();
+            body.doPendingModifications();
+            System.out.println("Destroyed a body part");
+
+        }
+        Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
+    }
+
+
+
     public void changeHealth(int diff) {
         health += diff;
     }
@@ -81,5 +99,16 @@ public class Snake implements Animatable {
 
     public void slowDownSpeed(float change) {
         speed *= change;
+    public void changeSpeed(){
+        this.speed = speed * 2;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        speed = 2;
+                    }
+                },
+                3000
+        );
     }
 }
