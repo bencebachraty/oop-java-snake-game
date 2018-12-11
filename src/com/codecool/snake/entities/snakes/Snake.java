@@ -40,8 +40,8 @@ public class Snake implements Animatable {
 
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        if (InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
+        if (InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
     }
 
@@ -70,7 +70,6 @@ public class Snake implements Animatable {
     }
 
 
-
     public void changeHealth(int diff) {
         health += diff;
     }
@@ -84,7 +83,7 @@ public class Snake implements Animatable {
 
     private void updateSnakeBodyHistory() {
         GameEntity prev = head;
-        for(GameEntity currentPart : body.getList()) {
+        for (GameEntity currentPart : body.getList()) {
             currentPart.setPosition(prev.getPosition());
             prev = currentPart;
         }
@@ -93,13 +92,16 @@ public class Snake implements Animatable {
     private GameEntity getLastPart() {
         GameEntity result = body.getLast();
 
-        if(result != null) return result;
+        if (result != null) return result;
         return head;
     }
 
     public void slowDownSpeed(float change) {
         speed *= change;
-    public void changeSpeed(){
+    }
+
+    public void changeSpeed() {
+
         this.speed = speed * 2;
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
@@ -112,3 +114,4 @@ public class Snake implements Animatable {
         );
     }
 }
+
