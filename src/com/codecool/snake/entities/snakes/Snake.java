@@ -79,7 +79,7 @@ public class Snake implements Animatable {
         return head;
     }
 
-    public void changeSpeed(float change) {
+    public void slowDownSpeed(float change) {
         speed *= change;
     }
 }

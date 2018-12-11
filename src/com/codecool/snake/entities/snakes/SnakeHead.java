@@ -51,7 +51,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if(entity instanceof SlowDownEnemy){
             System.out.println(getMessage());
-            snake.changeSpeed(0.8f);
+            snake.slowDownSpeed(0.8f);
         }
     }
 
