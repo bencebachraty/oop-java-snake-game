@@ -13,7 +13,8 @@ import java.util.Arrays;
 
 
 public class Snake implements Animatable {
-    private static float speed = 2;
+    private float speed = 2;
+
     private int health = 100;
 
     private SnakeHead head;
@@ -96,6 +97,8 @@ public class Snake implements Animatable {
         return head;
     }
 
+    public void slowDownSpeed(float change) {
+        speed *= change;
     public void changeSpeed(){
         this.speed = speed * 2;
         new java.util.Timer().schedule(

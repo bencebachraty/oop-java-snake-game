@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.enemies.SlowDownEnemy;
 import com.codecool.snake.entities.enemies.SizeReduceEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.PowerUpAddLife;
@@ -50,12 +51,10 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnSimpleEnemies(int numberOfEnemies) {
-        for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
-    }
-
-    private void spawnSizeReduceEnemies(int numberOfEnemies) {
-        for (int i = 0; i < numberOfEnemies; ++i) new SizeReduceEnemy();
+    private void spawnEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+        for(int i = 0; i < numberOfEnemies; ++i) new SlowDownEnemy();
+        for(int i = 0; i < numberOfEnemies; ++i) new SizeReduceEnemy();
     }
 
 
