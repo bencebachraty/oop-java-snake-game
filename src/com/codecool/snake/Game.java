@@ -14,17 +14,33 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+    private Game game;
 
 
     public Game() {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
+
+        game = Globals.getInstance().game;
+
+        Text text = new Text();
+        text.setText("Total Life: ");
+        text.setX(40);
+        text.setY(50);
+        text.setFill(Color.BLUE);
+        text.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        game.getChildren().add(text);
 
         init();
     }
