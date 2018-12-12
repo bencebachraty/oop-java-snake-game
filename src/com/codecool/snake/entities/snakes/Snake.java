@@ -110,7 +110,7 @@ public class Snake implements Animatable {
 
     public void changeSpeed() {
 
-        this.speed = speed * 2;
+        this.speed = 4;
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
