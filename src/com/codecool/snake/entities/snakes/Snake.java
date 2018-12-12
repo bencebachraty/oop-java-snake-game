@@ -111,13 +111,8 @@ public class Snake implements Animatable {
         return head;
     }
 
-    public void slowDownSpeed(float change) {
+    public void changeSpeed(float change) {
         speed *= change;
-    }
-
-    public void changeSpeed() {
-
-        this.speed = 4;
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
