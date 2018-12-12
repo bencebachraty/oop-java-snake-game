@@ -20,8 +20,6 @@ import javafx.scene.layout.Pane;
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
-    private Game game;
-
 
     public Game() {
         Globals.getInstance().game = this;
