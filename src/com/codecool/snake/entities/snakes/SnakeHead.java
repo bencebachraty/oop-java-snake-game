@@ -45,17 +45,20 @@ public class SnakeHead extends GameEntity implements Interactable {
 
     @Override
     public void apply(GameEntity entity) {
-        if(entity instanceof Enemy){
-            System.out.println(getMessage());
+        if (entity instanceof Enemy){
             snake.changeHealth(((Enemy) entity).getDamage());
             DisplayHealth.updateHealth();
+            if (entity instanceof SizeReduceEnemy) {
+                System.out.println(getMessage());
+                snake.removePart(3);
+            } else if (entity instanceof SlowDownEnemy) {
+                System.out.println(getMessage());
+                snake.changeSpeed(0.5f);
+            } else {
+                System.out.println(getMessage());
+            }
         }
-        if(entity instanceof SizeReduceEnemy){
-            System.out.println(getMessage());
-            snake.removePart(3);
-            DisplayHealth.updateHealth();
-        }
-        if(entity instanceof SimplePowerUp){
+        if (entity instanceof SimplePowerUp){
             System.out.println(getMessage());
             snake.addPart(4);
         }
@@ -66,12 +69,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if (entity instanceof SpeedPowerUp) {
             System.out.println(getMessage());
-            snake.changeSpeed();
-        }
-        if(entity instanceof SlowDownEnemy){
-            System.out.println(getMessage());
-            snake.slowDownSpeed(0.8f);
-            DisplayHealth.updateHealth();
+            snake.changeSpeed(2);
         }
     }
 
