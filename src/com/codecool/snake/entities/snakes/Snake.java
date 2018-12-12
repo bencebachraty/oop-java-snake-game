@@ -39,6 +39,11 @@ public class Snake implements Animatable {
         SnakeControl turnDir = getUserInput();
         head.updateRotation(turnDir, speed);
 
+        SnakeControl laser = getUserInputShoot();
+        if (laser == SnakeControl.SHOOT) {
+            new Laser();
+        }
+
         updateSnakeBodyHistory();
         checkForGameOverConditions();
 
@@ -50,6 +55,12 @@ public class Snake implements Animatable {
         if (InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if (InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
+    }
+
+    private SnakeControl getUserInputShoot() {
+        SnakeControl shoot = SnakeControl.INVALID;
+        if (InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) shoot = SnakeControl.SHOOT;
+        return shoot;
     }
 
     public void addPart(int numParts) {

@@ -19,6 +19,8 @@ import javafx.geometry.Point2D;
 public class SnakeHead extends GameEntity implements Interactable {
     private static final float turnRate = 2;
     private Snake snake;
+    private static Vec2d headPosition = new Vec2d(0,0);
+    private static double direction;
 
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;
@@ -35,6 +37,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         if (turnDirection.equals(SnakeControl.TURN_RIGHT)) {
             headRotation = headRotation + turnRate;
         }
+
+        direction = headRotation;
+        headPosition.x = getX();
+        headPosition.y = getY();
 
         // set rotation and position
         setRotate(headRotation);
@@ -76,5 +82,13 @@ public class SnakeHead extends GameEntity implements Interactable {
     @Override
     public String getMessage() {
         return "IMMA SNAEK HED! SPITTIN' MAH WENOM! SPITJU-SPITJU!";
+    }
+
+    public static double getDirection() {
+        return direction;
+    }
+
+    public static Vec2d getHeadPosition() {
+        return headPosition;
     }
 }
