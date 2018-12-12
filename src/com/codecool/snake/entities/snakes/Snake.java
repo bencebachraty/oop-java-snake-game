@@ -22,7 +22,7 @@ import java.util.Optional;
 public class Snake implements Animatable {
     private float speed = 2;
 
-    private int health = 100;
+    private static int health = 100;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -79,6 +79,13 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+        if (health > 100) {
+            health = 100;
+        }
+    }
+
+    public static int getHealth() {
+        return health;
     }
 
     private void checkForGameOverConditions() {
