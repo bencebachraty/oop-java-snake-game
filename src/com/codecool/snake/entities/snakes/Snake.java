@@ -7,12 +7,16 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Region;
 import javafx.stage.StageStyle;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 
 public class Snake implements Animatable {
@@ -119,13 +123,26 @@ public class Snake implements Animatable {
     }
 
     private void gameOverAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setGraphic(null);
         alert.getDialogPane().setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         alert.setTitle("Game Over");
         alert.setHeaderText(null);
         alert.setContentText("Final score: " + getScore());
-        alert.show();
+
+        ButtonType buttonTypeRestart = new ButtonType("Restart");
+        ButtonType buttonTypeExit = new ButtonType("Exit");
+        alert.getButtonTypes().setAll(buttonTypeRestart, buttonTypeExit);
+
+        Platform.runLater(() -> {
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonTypeRestart) {
+                System.out.println("Starting new game..");
+                // restart here
+            } else if (result.get() == buttonTypeExit) {
+                Platform.exit();
+            }
+        });
     }
 
     private int getScore() {
