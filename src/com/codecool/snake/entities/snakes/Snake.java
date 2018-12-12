@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class Snake implements Animatable {
     private float speed = 2;
 
-    private int health = 100;
+    private static int health = 100;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -75,6 +75,10 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+    }
+
+    public static int getHealth() {
+        return health;
     }
 
     private void checkForGameOverConditions() {

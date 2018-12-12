@@ -11,14 +11,10 @@ import com.codecool.snake.entities.powerups.SpeedPowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
+import com.codecool.snake.resources.DisplayHealth;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 
 
 public class Game extends Pane {
@@ -32,21 +28,12 @@ public class Game extends Pane {
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
 
-        game = Globals.getInstance().game;
-
-        Text text = new Text();
-        text.setText("Total Life: ");
-        text.setX(40);
-        text.setY(50);
-        text.setFill(Color.BLUE);
-        text.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-        game.getChildren().add(text);
-
         init();
     }
 
     public void init() {
         spawnSnake();
+        createHealthDisplay();
         spawnAddLife(4);
         spawnPowerUps(5);
         spawnEnemies(4);
@@ -64,6 +51,10 @@ public class Game extends Pane {
 
     private void spawnSnake() {
         snake = new Snake(new Vec2d(500, 500));
+    }
+
+    private void createHealthDisplay() {
+        new DisplayHealth();
     }
 
     private void spawnEnemies(int numberOfEnemies) {
