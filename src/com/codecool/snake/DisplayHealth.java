@@ -1,4 +1,4 @@
-package com.codecool.snake.resources;
+package com.codecool.snake;
 
 import com.codecool.snake.Game;
 import com.codecool.snake.Globals;

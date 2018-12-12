@@ -10,12 +10,8 @@ import com.codecool.snake.entities.powerups.PowerUpAddLife;
 import com.codecool.snake.entities.enemies.SizeReduceEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import com.codecool.snake.entities.powerups.SpeedPowerUp;
-import com.codecool.snake.resources.DisplayHealth;
+import com.codecool.snake.DisplayHealth;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
