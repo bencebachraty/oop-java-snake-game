@@ -5,21 +5,15 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.Main;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.eventhandler.InputHandler;
-import com.codecool.snake.Game;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
-import javafx.stage.StageStyle;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 
@@ -32,14 +26,7 @@ public class Snake implements Animatable {
 
     private static DelayedModificationList<GameEntity> body;
 
-
     private int laserCounter = 0;
-
-    private static Vec2d pos;
-
-    public static Vec2d getPos() {
-        return pos;
-    }
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
@@ -58,8 +45,6 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
-
-        this.pos = head.getPosition();
 
     }
 
@@ -100,15 +85,12 @@ public class Snake implements Animatable {
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
 
-
     public void changeHealth(int diff) {
         health += diff;
         if (health > 100) {
             health = 100;
         }
     }
-
-
 
     public static int getHealth() {
         return health;
@@ -211,15 +193,6 @@ public class Snake implements Animatable {
                     1000
             );
         }
-    }
-
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
-
     }
 }
 
