@@ -26,7 +26,6 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
         int speed = 3;
         heading = Utils.directionToVector(direction, speed);
-        System.out.println("new laser");
     }
 
     @Override

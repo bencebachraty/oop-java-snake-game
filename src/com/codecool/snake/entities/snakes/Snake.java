@@ -27,6 +27,7 @@ public class Snake implements Animatable {
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
+    private int laserCounter = 0;
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
@@ -38,11 +39,6 @@ public class Snake implements Animatable {
     public void step() {
         SnakeControl turnDir = getUserInput();
         head.updateRotation(turnDir, speed);
-
-        SnakeControl laser = getUserInputShoot();
-        if (laser == SnakeControl.SHOOT) {
-            new Laser();
-        }
 
         updateSnakeBodyHistory();
         checkForGameOverConditions();
@@ -162,6 +158,23 @@ public class Snake implements Animatable {
         int score = body.getList().size() - 4;
         if (score < 1) return 0;
         else return score;
+    }
+
+    public void shootLaser() {
+        SnakeControl laser = getUserInputShoot();
+        if (laser == SnakeControl.SHOOT && laserCounter == 0) {
+            new Laser();
+            laserCounter = 1;
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            laserCounter = 0;
+                        }
+                    },
+                    2000
+            );
+        }
     }
 }
 
