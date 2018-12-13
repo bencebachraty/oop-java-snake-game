@@ -46,6 +46,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
             System.out.println(getMessage());
             destroy();
         }
+        checkForLaser(entity);
     }
 
     @Override

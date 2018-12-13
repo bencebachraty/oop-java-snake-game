@@ -48,6 +48,6 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
     @Override
     public String getMessage() {
-        return ("Laser");
+        return ("Enemy destroyed!");
     }
 }
