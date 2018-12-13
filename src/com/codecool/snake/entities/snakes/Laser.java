@@ -1,6 +1,5 @@
 package com.codecool.snake.entities.snakes;
 
-import com.codecool.snake.Game;
 import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
@@ -47,11 +46,11 @@ public class Laser extends GameEntity implements Animatable, Interactable {
             System.out.println(getMessage());
             destroy();
             if (entity instanceof SlowDownEnemy) {
-                SlowDownEnemy newEn = new SlowDownEnemy();
+                new SlowDownEnemy();
             } else if (entity instanceof SizeReduceEnemy) {
-                SizeReduceEnemy newEn = new SizeReduceEnemy();
+                new SizeReduceEnemy();
             } else if (entity instanceof SimpleEnemy) {
-                SimpleEnemy newEn = new SimpleEnemy();
+                new SimpleEnemy();
             }
         }
     }

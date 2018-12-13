@@ -14,7 +14,6 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import java.util.Random;
 
 
 public class Game extends Pane {
@@ -67,14 +66,15 @@ public class Game extends Pane {
     private static void spawnPowerUps(int numberOfPowerUps) {
         if (Snake.getHealth() == 100) {
             int randomFactor = (int)(Math.random() * ((1 - 0) + 1)) + 0;
-            GameEntity speed = new SpeedPowerUp(randomFactor);
+            new SpeedPowerUp(randomFactor);
+
             for(int i = 0; i < numberOfPowerUps; ++i) {
                 int randomF = (int)(Math.random() * ((1 - 0) + 1)) + 0;
                 new SimplePowerUp(randomF);
                 new PowerUpAddLife(randomF);
             }
         } else {
-            GameEntity speed = new SpeedPowerUp();
+            new SpeedPowerUp();
             for(int i = 0; i < numberOfPowerUps; ++i) {
                 new SimplePowerUp();
                 new PowerUpAddLife();
