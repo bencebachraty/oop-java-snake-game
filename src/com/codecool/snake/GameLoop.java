@@ -24,6 +24,7 @@ public class GameLoop {
     public void step() {
         if(running) {
             snake.step();
+            snake.shootLaser();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();

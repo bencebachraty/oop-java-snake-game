@@ -31,6 +31,9 @@ public class Snake implements Animatable {
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
+
+    private int laserCounter = 0;
+
     private static Vec2d pos;
 
     public static Vec2d getPos() {
@@ -64,6 +67,12 @@ public class Snake implements Animatable {
         if (InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if (InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
+    }
+
+    private SnakeControl getUserInputShoot() {
+        SnakeControl shoot = SnakeControl.INVALID;
+        if (InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) shoot = SnakeControl.SHOOT;
+        return shoot;
     }
 
     public void addPart(int numParts) {
@@ -185,12 +194,29 @@ public class Snake implements Animatable {
         else return score;
     }
 
+    public void shootLaser() {
+        SnakeControl laser = getUserInputShoot();
+        if (laser == SnakeControl.SHOOT && laserCounter == 0) {
+            new Laser();
+            laserCounter = 1;
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            laserCounter = 0;
+                        }
+                    },
+                    1000
+            );
+        }
+
     public float getSpeed() {
         return speed;
     }
 
     public void setSpeed(float speed) {
         this.speed = speed;
+
     }
 }
 

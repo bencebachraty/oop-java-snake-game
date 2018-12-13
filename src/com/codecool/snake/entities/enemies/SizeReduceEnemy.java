@@ -48,6 +48,7 @@ public class SizeReduceEnemy extends Enemy implements Animatable, Interactable {
             destroy();
             SizeReduceEnemy newEn = new SizeReduceEnemy();
         }
+        checkForLaser(entity);
     }
 
     @Override

@@ -52,6 +52,7 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
             destroy();
             SlowDownEnemy newEn = new SlowDownEnemy();
         }
+        checkForLaser(entity);
     }
 
     @Override

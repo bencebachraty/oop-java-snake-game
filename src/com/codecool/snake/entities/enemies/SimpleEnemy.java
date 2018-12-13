@@ -56,6 +56,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
             destroy();
             SimpleEnemy newEn = new SimpleEnemy();
         }
+        checkForLaser(entity);
     }
 
     @Override
