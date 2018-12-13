@@ -45,7 +45,6 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
-
     }
 
     private SnakeControl getUserInput() {
@@ -75,6 +74,9 @@ public class Snake implements Animatable {
     public void removePart(int numParts) {
 
         for (int i = 0; i < numParts; i++) {
+            if (body.getList().size() == 1) {
+                break;
+            }
             GameEntity parent = getLastPart();
             body.remove(parent);
             parent.destroy();
@@ -101,6 +103,7 @@ public class Snake implements Animatable {
             gameOverAlert();
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
+            health = 100;
         }
     }
 
