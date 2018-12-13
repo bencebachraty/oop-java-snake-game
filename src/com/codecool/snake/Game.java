@@ -34,6 +34,7 @@ public class Game extends Pane {
         createHealthDisplay();
         spawnPowerUps(5);
         spawnEnemies(6);
+        Snake.resetHealth();
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);

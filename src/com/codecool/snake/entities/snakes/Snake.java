@@ -108,6 +108,10 @@ public class Snake implements Animatable {
         }
     }
 
+    public static void resetHealth() {
+        health = 100;
+    }
+
     public static int getHealth() {
         return health;
     }
@@ -151,7 +155,7 @@ public class Snake implements Animatable {
     }
 
     public void boostSpeed() {
-        SnakeHead.setTurnRate(SnakeHead.getTurnRate()*2);
+        SnakeHead.setTurnRate(SnakeHead.getTurnRate() * 2);
         speed = speed * 2;
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
@@ -210,6 +214,7 @@ public class Snake implements Animatable {
             );
         }
     }
+
     public float getSpeed() {
         return speed;
     }
