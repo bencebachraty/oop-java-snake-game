@@ -17,6 +17,7 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
+    private double direction = rnd.nextDouble() * 360;
 
     public SlowDownEnemy() {
         super(-10);
@@ -38,6 +39,8 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
             destroy();
             SlowDownEnemy newEn = new SlowDownEnemy();
         }
+        setRotate(direction);
+        direction += 2;
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }

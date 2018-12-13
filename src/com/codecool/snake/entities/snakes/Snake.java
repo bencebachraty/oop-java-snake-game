@@ -2,10 +2,12 @@ package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
 import com.codecool.snake.Globals;
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.eventhandler.InputHandler;
+import com.codecool.snake.Game;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.application.Platform;
@@ -13,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.StageStyle;
 
@@ -23,7 +26,7 @@ import java.util.Optional;
 public class Snake implements Animatable {
     private float speed = 2;
 
-    private int health = 100;
+    private static int health = 100;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -90,6 +93,13 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+        if (health > 100) {
+            health = 100;
+        }
+    }
+
+    public static int getHealth() {
+        return health;
     }
 
     private void checkForGameOverConditions() {
@@ -115,7 +125,7 @@ public class Snake implements Animatable {
         return head;
     }
 
-    public void slowDownSpeed(float change) {
+    public void changeSpeed(float change) {
         speed *= change;
         SnakeHead.setTurnRate(1);
         new java.util.Timer().schedule(
@@ -161,8 +171,8 @@ public class Snake implements Animatable {
         Platform.runLater(() -> {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeRestart) {
-                System.out.println("Starting new game..");
-                // restart here
+                Main.restart();
+
             } else if (result.get() == buttonTypeExit) {
                 Platform.exit();
             }

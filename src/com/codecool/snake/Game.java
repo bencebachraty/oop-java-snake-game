@@ -17,9 +17,8 @@ import javafx.scene.layout.Pane;
 
 
 public class Game extends Pane {
-    private Snake snake = null;
-    private GameTimer gameTimer = new GameTimer();
-
+    private static Snake snake = null;
+    private static GameTimer gameTimer = new GameTimer();
 
     public Game() {
         Globals.getInstance().game = this;
@@ -29,8 +28,9 @@ public class Game extends Pane {
         init();
     }
 
-    public void init() {
+    public static void init() {
         spawnSnake();
+        createHealthDisplay();
         spawnAddLife(4);
         spawnPowerUps(5);
         spawnEnemies(4);
@@ -46,25 +46,31 @@ public class Game extends Pane {
         Globals.getInstance().startGame();
     }
 
-    private void spawnSnake() {
+    private static void spawnSnake() {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+
+    private static void createHealthDisplay() {
+        new DisplayHealth();
+    }
+
+    private static void spawnEnemies(int numberOfEnemies) {
+
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new SlowDownEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new SizeReduceEnemy();
     }
 
 
-    private void spawnPowerUps(int numberOfPowerUps) {
+    private static void spawnPowerUps(int numberOfPowerUps) {
 
         GameEntity speed = new SpeedPowerUp();
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
 
     }
 
-    private void spawnAddLife(int numberOfPowerUps) {
+    private static void spawnAddLife(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new PowerUpAddLife();
     }
 
