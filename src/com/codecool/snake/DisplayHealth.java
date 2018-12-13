@@ -1,7 +1,5 @@
 package com.codecool.snake;
 
-import com.codecool.snake.Game;
-import com.codecool.snake.Globals;
 import com.codecool.snake.entities.snakes.Snake;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
@@ -11,7 +9,7 @@ import javafx.scene.text.FontWeight;
 
 public class DisplayHealth {
 
-    private static Game game;
+    private Game game;
     private static Text text = new Text();
 
     public DisplayHealth() {
