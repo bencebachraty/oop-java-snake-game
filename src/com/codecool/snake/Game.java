@@ -51,11 +51,11 @@ public class Game extends Pane {
     }
 
 
-    private void createHealthDisplay() {
+    private static void createHealthDisplay() {
         new DisplayHealth();
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    private static void spawnEnemies(int numberOfEnemies) {
 
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new SlowDownEnemy();
