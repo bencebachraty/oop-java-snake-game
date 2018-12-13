@@ -33,9 +33,9 @@ public class Main extends Application {
 
     public static void restart() {
         System.out.println("Starting new game..");
-        Globals.init();
         if (!primaryStage.isFocused()) primaryStage.requestFocus();
+        Display.clear();
+        Game.init();
         Globals.getInstance().startGame();
     }
-
 }
