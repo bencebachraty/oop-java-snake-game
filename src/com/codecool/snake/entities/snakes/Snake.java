@@ -140,7 +140,6 @@ public class Snake implements Animatable {
         Platform.runLater(() -> {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeRestart) {
-                // TODO restart
                 Main.restart();
 
             } else if (result.get() == buttonTypeExit) {
