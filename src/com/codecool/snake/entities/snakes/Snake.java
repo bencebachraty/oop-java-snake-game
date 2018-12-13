@@ -108,9 +108,7 @@ public class Snake implements Animatable {
         }
     }
 
-    public static void resetHealth() {
-        health = 100;
-    }
+
 
     public static int getHealth() {
         return health;
