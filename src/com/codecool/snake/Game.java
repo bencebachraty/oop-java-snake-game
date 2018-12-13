@@ -20,7 +20,6 @@ public class Game extends Pane {
     private static Snake snake = null;
     private static GameTimer gameTimer = new GameTimer();
 
-
     public Game() {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
@@ -31,6 +30,7 @@ public class Game extends Pane {
 
     public static void init() {
         spawnSnake();
+        createHealthDisplay();
         spawnAddLife(4);
         spawnPowerUps(5);
         spawnEnemies(4);
@@ -50,7 +50,13 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private static void spawnEnemies(int numberOfEnemies) {
+
+    private void createHealthDisplay() {
+        new DisplayHealth();
+    }
+
+    private void spawnEnemies(int numberOfEnemies) {
+
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new SlowDownEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new SizeReduceEnemy();
