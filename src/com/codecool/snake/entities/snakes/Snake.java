@@ -209,7 +209,7 @@ public class Snake implements Animatable {
                     1000
             );
         }
-
+    }
     public float getSpeed() {
         return speed;
     }
