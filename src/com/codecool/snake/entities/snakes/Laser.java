@@ -12,11 +12,11 @@ import javafx.geometry.Point2D;
 
 public class Laser extends GameEntity implements Animatable, Interactable {
 
-    private Point2D heading;
-    private double direction;
+    private Point2D heading;;
 
     public Laser() {
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
+        double direction;
+        setImage(Globals.getInstance().getImage("Laser"));
         Vec2d snakeHeadPosition = SnakeHead.getHeadPosition();
         setX(snakeHeadPosition.x);
         setY(snakeHeadPosition.y);
@@ -24,7 +24,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
         setRotate(direction);
 
-        int speed = 3;
+        int speed = 4;
         heading = Utils.directionToVector(direction, speed);
     }
 

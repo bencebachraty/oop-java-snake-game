@@ -172,7 +172,7 @@ public class Snake implements Animatable {
                             laserCounter = 0;
                         }
                     },
-                    2000
+                    1000
             );
         }
     }
