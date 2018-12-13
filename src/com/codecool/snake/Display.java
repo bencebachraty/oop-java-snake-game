@@ -7,8 +7,8 @@ import javafx.scene.layout.Pane;
 
 
 public class Display {
-    private Pane displayPane;
-    private DelayedModificationList<GameEntity> gameObjects = new DelayedModificationList<>();
+    private static Pane displayPane;
+    private static DelayedModificationList<GameEntity> gameObjects = new DelayedModificationList<>();
 
     public Display(Pane pane) {
         displayPane = pane;
@@ -37,7 +37,7 @@ public class Display {
         displayPane.getChildren().add(snakeHead);
     }
 
-    public void clear() {
+    public static void clear() {
         displayPane.getChildren().clear();
         gameObjects.clear();
     }

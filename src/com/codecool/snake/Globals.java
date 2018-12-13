@@ -3,18 +3,20 @@ package com.codecool.snake;
 import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 // class for holding all static stuff
 public class Globals {
     private static Globals instance = null;
+    public static Stage primaryStage;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1300;
+    public static final double WINDOW_HEIGHT = 730;
 
     public Display display;
     public Game game;
 
-    private GameLoop gameLoop;
+    public static GameLoop gameLoop;
     private Resources resources;
 
 

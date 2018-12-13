@@ -2,9 +2,12 @@ package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
 import com.codecool.snake.Globals;
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.eventhandler.InputHandler;
+import com.codecool.snake.Game;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.application.Platform;
@@ -12,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.StageStyle;
 
@@ -27,11 +31,20 @@ public class Snake implements Animatable {
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
+
     private int laserCounter = 0;
+
+    private static Vec2d pos;
+
+    public static Vec2d getPos() {
+        return pos;
+    }
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
+
+        head.getPosition();
 
         addPart(4);
     }
@@ -44,6 +57,9 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
+
+        this.pos = head.getPosition();
+
     }
 
     private SnakeControl getUserInput() {
@@ -120,11 +136,29 @@ public class Snake implements Animatable {
 
     public void changeSpeed(float change) {
         speed *= change;
+        SnakeHead.setTurnRate(1);
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
                         speed = 2;
+                        SnakeHead.setTurnRate(2);
+                    }
+                },
+                3000
+        );
+    }
+
+    public void changeSpeed() {
+
+        SnakeHead.setTurnRate(SnakeHead.getTurnRate()*2);
+        speed = speed * 2;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        speed = 2;
+                        SnakeHead.setTurnRate(2);
                     }
                 },
                 3000
@@ -146,8 +180,8 @@ public class Snake implements Animatable {
         Platform.runLater(() -> {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeRestart) {
-                System.out.println("Starting new game..");
-                // restart here
+                Main.restart();
+
             } else if (result.get() == buttonTypeExit) {
                 Platform.exit();
             }
@@ -175,6 +209,14 @@ public class Snake implements Animatable {
                     1000
             );
         }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+
     }
 }
 
