@@ -20,6 +20,7 @@ import java.util.Random;
 public class Game extends Pane {
     private static Snake snake = null;
     private static GameTimer gameTimer = new GameTimer();
+    public static int numOfEn = 5;
 
     public Game() {
         Globals.getInstance().game = this;
@@ -33,7 +34,7 @@ public class Game extends Pane {
         spawnSnake();
         createHealthDisplay();
         spawnPowerUps(5);
-        spawnEnemies(6);
+        spawnEnemies(numOfEn);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
