@@ -10,8 +10,8 @@ public class Globals {
     private static Globals instance = null;
     public static Stage primaryStage;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1300;
+    public static final double WINDOW_HEIGHT = 730;
 
     public Display display;
     public Game game;
