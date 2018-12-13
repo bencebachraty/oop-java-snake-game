@@ -10,6 +10,13 @@ import java.util .Random;
 public class SimplePowerUp extends GameEntity implements Interactable {
     private static Random rnd = new Random();
 
+    public SimplePowerUp(int randChoice){
+        double[] sectionsX = {rnd.nextDouble() * 550, rnd.nextDouble() * (1200 - 650) + 650};
+        setImage(Globals.getInstance().getImage("PowerUpBerry"));
+        setX(sectionsX[randChoice]);
+        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+    }
+
     public SimplePowerUp() {
         setImage(Globals.getInstance().getImage("PowerUpBerry"));
 

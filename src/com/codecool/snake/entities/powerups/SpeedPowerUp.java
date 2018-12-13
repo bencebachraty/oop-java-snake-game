@@ -10,6 +10,13 @@ import java.util.Random;
 public class SpeedPowerUp extends GameEntity implements Interactable {
     private static Random rnd = new Random();
 
+    public SpeedPowerUp(int randChoice){
+        double[] sectionsX = {rnd.nextDouble() * 550, rnd.nextDouble() * (1200 - 650) + 650};
+        setImage(Globals.getInstance().getImage("PowerUpSpeed"));
+        setX(sectionsX[randChoice]);
+        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+    }
+
     public SpeedPowerUp(){
         setImage(Globals.getInstance().getImage("PowerUpSpeed"));
 

@@ -14,6 +14,7 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import java.util.Random;
 
 
 public class Game extends Pane {
@@ -31,9 +32,8 @@ public class Game extends Pane {
     public static void init() {
         spawnSnake();
         createHealthDisplay();
-        spawnAddLife(4);
         spawnPowerUps(5);
-        spawnEnemies(4);
+        spawnEnemies(6);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -47,7 +47,7 @@ public class Game extends Pane {
     }
 
     private static void spawnSnake() {
-        snake = new Snake(new Vec2d(500, 500));
+        snake = new Snake(new Vec2d(600, 400));
     }
 
 
@@ -64,15 +64,23 @@ public class Game extends Pane {
 
 
     private static void spawnPowerUps(int numberOfPowerUps) {
-
-        GameEntity speed = new SpeedPowerUp();
-        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
-
+        if (Snake.getHealth() == 100) {
+            int randomFactor = (int)(Math.random() * ((1 - 0) + 1)) + 0;
+            GameEntity speed = new SpeedPowerUp(randomFactor);
+            for(int i = 0; i < numberOfPowerUps; ++i) {
+                int randomF = (int)(Math.random() * ((1 - 0) + 1)) + 0;
+                new SimplePowerUp(randomF);
+                new PowerUpAddLife(randomF);
+            }
+        } else {
+            GameEntity speed = new SpeedPowerUp();
+            for(int i = 0; i < numberOfPowerUps; ++i) {
+                new SimplePowerUp();
+                new PowerUpAddLife();
+            }
+        }
     }
 
-    private static void spawnAddLife(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) new PowerUpAddLife();
-    }
 
     private void setupInputHandling() {
         Scene scene = getScene();

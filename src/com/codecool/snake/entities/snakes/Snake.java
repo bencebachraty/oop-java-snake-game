@@ -29,7 +29,8 @@ public class Snake implements Animatable {
     private static int health = 100;
 
     private SnakeHead head;
-    private DelayedModificationList<GameEntity> body;
+
+    private static DelayedModificationList<GameEntity> body;
 
     private static Vec2d pos;
 
@@ -140,8 +141,7 @@ public class Snake implements Animatable {
         );
     }
 
-    public void changeSpeed() {
-
+    public void boostSpeed() {
         SnakeHead.setTurnRate(SnakeHead.getTurnRate()*2);
         speed = speed * 2;
         new java.util.Timer().schedule(

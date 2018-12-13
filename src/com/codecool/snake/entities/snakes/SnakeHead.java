@@ -78,7 +78,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if (entity instanceof SpeedPowerUp) {
             System.out.println(getMessage());
-            snake.changeSpeed(2);
+            snake.boostSpeed();
         }
     }
 
