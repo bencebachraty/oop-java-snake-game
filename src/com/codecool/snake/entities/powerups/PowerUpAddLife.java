@@ -29,8 +29,7 @@ public class PowerUpAddLife extends GameEntity implements Interactable {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
             destroy();
-
-            PowerUpAddLife spawnPowerUp = new PowerUpAddLife();
+            new PowerUpAddLife();
         }
     }
 
