@@ -7,7 +7,6 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
-import java.awt.Toolkit;
 
 import javafx.geometry.Point2D;
 
@@ -37,7 +36,7 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
     public void step() {
         if (isOutOfBounds()) {
             destroy();
-            SlowDownEnemy newEn = new SlowDownEnemy();
+            new SlowDownEnemy();
         }
         setRotate(direction);
         direction += 2;
@@ -50,7 +49,7 @@ public class SlowDownEnemy extends Enemy implements Animatable, Interactable {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
             destroy();
-            SlowDownEnemy newEn = new SlowDownEnemy();
+            new SlowDownEnemy();
         }
         checkForLaser(entity);
     }

@@ -18,7 +18,7 @@ public class SizeReduceEnemy extends Enemy implements Animatable, Interactable {
     private static Random rnd = new Random();
 
     public SizeReduceEnemy() {
-        super(-5);
+        super(-10);
 
         setImage(Globals.getInstance().getImage("SizeReduceEnemy"));
         setX(1);
@@ -35,7 +35,7 @@ public class SizeReduceEnemy extends Enemy implements Animatable, Interactable {
     public void step() {
         if (isOutOfBounds()) {
             destroy();
-            SizeReduceEnemy newEn = new SizeReduceEnemy();
+            new SizeReduceEnemy();
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
@@ -46,7 +46,7 @@ public class SizeReduceEnemy extends Enemy implements Animatable, Interactable {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
             destroy();
-            SizeReduceEnemy newEn = new SizeReduceEnemy();
+            new SizeReduceEnemy();
         }
         checkForLaser(entity);
     }
