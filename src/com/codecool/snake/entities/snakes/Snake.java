@@ -16,7 +16,6 @@ import javafx.scene.layout.Region;
 
 import java.util.Optional;
 
-
 public class Snake implements Animatable {
     private float speed = 2;
 

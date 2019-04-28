@@ -15,7 +15,7 @@ import javafx.geometry.Point2D;
 
 public class Laser extends GameEntity implements Animatable, Interactable {
 
-    private Point2D heading;;
+    private Point2D heading;
 
     public Laser() {
         double direction;
