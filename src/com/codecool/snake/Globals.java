@@ -2,7 +2,6 @@ package com.codecool.snake;
 
 import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 // class for holding all static stuff

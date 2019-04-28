@@ -12,21 +12,21 @@ public class SnakeBody extends GameEntity {
     private Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
 
-    public SnakeBody(Vec2d coord) {
+    public SnakeBody(Vec2d position) {
         setImage(Globals.getInstance().getImage("SnakeBody"));
-        setX(coord.x);
-        setY(coord.y);
+        setX(position.x);
+        setY(position.y);
 
         for (int i = 0; i < historySize; i++) {
-            history.add(coord);
+            history.add(position);
         }
     }
 
     @Override
-    public void setPosition(Vec2d pos) {
+    public void setPosition(Vec2d position) {
         Vec2d currentPos = history.poll(); // remove the oldest item from the history
         setX(currentPos.x);
         setY(currentPos.y);
-        history.add(pos); // add the parent's current position to the beginning of the history
+        history.add(position); // add the parent's current position to the beginning of the history
     }
 }

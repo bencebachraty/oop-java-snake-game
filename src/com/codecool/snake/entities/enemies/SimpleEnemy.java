@@ -10,8 +10,6 @@ import java.util.Random;
 
 import javafx.geometry.Point2D;
 
-
-
 public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
